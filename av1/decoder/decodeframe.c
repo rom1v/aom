@@ -3112,6 +3112,7 @@ static void decode_tile(AV1Decoder *pbi, ThreadData *const td, int tile_row,
                        cm->seq_params.sb_size, 0x3);
 
       if (aom_reader_has_overflowed(td->bit_reader)) {
+        printf("aom_reader_has_overflowed\n");
         aom_merge_corrupted_flag(&td->xd.corrupted, 1);
         return;
       }
@@ -3126,6 +3127,7 @@ static void decode_tile(AV1Decoder *pbi, ThreadData *const td, int tile_row,
 static const uint8_t *decode_tiles(AV1Decoder *pbi, const uint8_t *data,
                                    const uint8_t *data_end, int start_tile,
                                    int end_tile) {
+  printf("=======\n");
   AV1_COMMON *const cm = &pbi->common;
   ThreadData *const td = &pbi->td;
   const int tile_cols = cm->tile_cols;
